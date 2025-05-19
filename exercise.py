@@ -12,13 +12,14 @@ import os
 
 class n_convLayers(nn.Module):
 
-  #create a flexibly-sized block of convolutions+ReLU
   def __init__(self,
                nb_conv_per_level: int,
                inp_channels: int,
                nb_features: int,
                conv_kernel_size: int):
     """
+        create a flexibly-sized block of convolutions+ReLU
+
         Parameters
         ----------
         inp_channels : int
@@ -28,6 +29,7 @@ class n_convLayers(nn.Module):
         nb_conv_per_level : int
             Number of convolutional layers at each level.
     """
+
     super(n_convLayers, self).__init__()
 
     #instantiate one 2D convolution with specified input channels and output channels + activation
@@ -370,6 +372,9 @@ def train(
     """
     A training function
 
+    This function is used to generate and train a voxelmorph UNET model. 
+    It returns a trained model when given the input data and optional settings for the model architecture and its training.
+
     Parameters
     ----------
     trainset : required training set tensor (B, 2, X, Y) tensor
@@ -569,7 +574,8 @@ def train(
 
 def test(model, testset,vxmorph_lambda: float = 0):
     """
-    A testing function
+    A testing function.
+    This function is used to test a previously-trained voxelmorph UNET model. 
 
     Parameters
     ----------
